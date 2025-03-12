@@ -275,9 +275,6 @@ def calculate_analysis(data, category):
     }
 
     return results, level_dataframes  # Return both the aggregated results and the DataFrames
-data = pd.read_csv('Employee_data.csv')
-data=data.iloc[:,0:2]
-data = data.rename(columns = {'Employee ID':'ID'})
 
 
 logo_url = "Images/LCY3 Logo.png"
@@ -292,6 +289,9 @@ with st.sidebar:
     )
     uploaded_file2 = st.file_uploader(
         "Upload second CSV or Excel file", type=["csv", "xlsx"]
+    )
+    uploaded_file3 = st.file_uploader(
+        "Upload Employee Data from PPR"m type=['csv']
     )
 
 if uploaded_file1 and uploaded_file2:
@@ -308,6 +308,9 @@ if uploaded_file1 and uploaded_file2:
         pd.read_csv(uploaded_file2,usecols=range(22))
         if uploaded_file2.name.endswith("csv")
         else pd.read_excel(uploaded_file2,usecols=range(22))
+    )
+    df3 = (
+        pd.read_csv(uploaded_file3)
     )
 
     line_items = {
@@ -409,6 +412,9 @@ if uploaded_file1 and uploaded_file2:
             ignore_index=True,
         )
         New_data.fillna(0)
+        data = df3
+        data=data.iloc[:,0:2]
+        data = data.rename(columns = {'Employee ID':'ID'})
         New_data= pd.merge(data,New_data,on='ID')
         # Ensure the ID column is treated as strings
         New_data["ID"] = New_data["ID"].astype(str).str.replace(",", "")
