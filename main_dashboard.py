@@ -291,7 +291,7 @@ with st.sidebar:
         "Upload second CSV or Excel file", type=["csv", "xlsx"]
     )
     uploaded_file3 = st.file_uploader(
-        "Upload Employee Data from PPR"m type=['csv']
+        "Upload Employee Data from PPR", type=['csv']
     )
 
 if uploaded_file1 and uploaded_file2:
