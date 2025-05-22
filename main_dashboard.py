@@ -283,16 +283,16 @@ header_func(logo_url=logo_url)
 # st.title("Shift Performance Dashboard")
 with st.sidebar:
     process_option = st.radio("Select Process", ("1. Stow To Prime", "2. Each Transfer In","3. Pick", "4. Chutings","5. Pack Singles", "6. Pack Multis"))
-    uploaded_file3 = st.file_uploader(
-        "Upload Employee Data from PPR", type=['csv']
-    )
+
     uploaded_file1 = st.file_uploader(
         "Upload first CSV or Excel file", type=["csv", "xlsx"]
     )
     uploaded_file2 = st.file_uploader(
         "Upload second CSV or Excel file", type=["csv", "xlsx"]
     )
-    
+    uploaded_file3 = st.file_uploader(
+        "Upload Employee Data from PPR",type=['csv']
+    )
 
 if uploaded_file1 and uploaded_file2:
     header = ['Type', 'ID', 'Name', 'Manager', 'LC', 'Small Hours', 'Medium Hours',
